@@ -26,23 +26,19 @@ const noteSchema = joi.object().keys({
         .error(new Error('Notes content is required')),
 })
 
-const loginSchema = joi.object().keys({
-    email: joi
+const updateNoteSchema = joi.object().keys({
+    title: joi
         .string()
-        .email()
-        .required()
         .error(new Error('Provide valid email address')),
     password: joi
         .string()
-        .min(8)
-        .required()
         .error(new Error('Password must be at least 8 characters')),
 })
 
 const notesDto = validateBody( noteSchema )
-const loginDto = validateBody(loginSchema)
+const updateDto = validateBody(updateNoteSchema)
 
 module.exports = {
     notesDto,
-    loginDto,
+    updateDto,
 }

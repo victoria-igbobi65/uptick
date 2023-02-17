@@ -1,8 +1,7 @@
 const express = require('express')
 const logger = require('morgan')
-
-
 const { userRouter } = require('./src/routes/user')
+const { noteRouter } = require('./src/routes/notes')
 const { AppError } = require('./src/errors/AppError')
 const globalErrorhandler = require('./src/errors/errorHandler')
 const app = express()
@@ -13,7 +12,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(logger('dev'))
 
 app.use('/auth', userRouter)
-
+app.use('/notes', noteRouter )
 
 
 app.use('*', (req, res, next) => {

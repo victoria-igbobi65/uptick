@@ -1,7 +1,7 @@
 const { StatusCodes } = require('http-status-codes');
 const { AppError } = require('../errors/AppError');
 const catchAsync = require('../errors/catchAsync')
-const HELPER = require('../helper')
+const { decodeToken } = require('../helper')
 
 const validateUser = catchAsync( async( req, res, next ) =>{ 
 
@@ -9,8 +9,8 @@ const validateUser = catchAsync( async( req, res, next ) =>{
     if (!token){
         throw new AppError('You are not logged in!', StatusCodes.FORBIDDEN )
     }
-
-    const userId = (await HELPER.decodeToken(token)).id;
+    
+    const userId = (await decodeToken(token)).id;
     if (!userId) {
         throw new AppError('Invalid token!', StatusCodes.FORBIDDEN)
     }

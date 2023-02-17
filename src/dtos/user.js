@@ -17,12 +17,14 @@ const registerSchema = joi.object().keys({
     email: joi
         .string()
         .email()
+        .trim()
         .required()
         .error(new Error('Provide a valid email address')),
     
     password: joi
         .string()
         .min(8)
+        .trim()
         .required()
         .error(new Error('Password must be at least 8 characters')),
 })
@@ -31,11 +33,13 @@ const loginSchema = joi.object().keys({
     email: joi
         .string()
         .email()
+        .trim()
         .required()
         .error(new Error('Provide valid email address')),
     password: joi
         .string()
         .min(8)
+        .trim()
         .required()
         .error(new Error('Password must be at least 8 characters')),
 })

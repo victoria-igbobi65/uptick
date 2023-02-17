@@ -48,4 +48,23 @@ const verifyNoteState = ( object ) => {
 
 }
 
-module.exports={ signToken, setCookies, decodeToken, verifyNoteState }
+const buildQuery = ( owner, object ) =>{
+    let query = { owner: owner };
+    let sortBy
+
+    if (object.q){
+        query.$or = [
+            { title: { $regex: object.q, $options: 'i' } }, // check if search word matches in field1
+            { body: { $regex: object.q, $options: 'i' } }, // check if search word matches in field2
+        ]
+    }
+    if (object.sort) {
+        sortBy = object.sort.split(',').join(' ')
+    } else {
+        sortBy = '-createdAt'
+    }
+    
+    return { query, sortBy }
+} 
+
+module.exports={ signToken, setCookies, decodeToken, verifyNoteState, buildQuery }

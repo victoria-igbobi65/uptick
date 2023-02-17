@@ -2,6 +2,8 @@
 
 A simple backend API that allows users create, read, update and delete their notes.
 
+
+
 #### Technologies
 <div align="center">
 

@@ -1,3 +1,4 @@
+const { StatusCodes } = require("http-status-codes");
 const { AppError } = require("../errors/AppError");
 const catchAsync = require("../errors/catchAsync");
 const { getaNote } = require("../services/notes");
@@ -8,7 +9,7 @@ const protect = catchAsync( async( req, res, next ) => {
     const found = await getaNote({ owner: owner, _id: noteId })
 
     if (!found){
-        throw new AppError(`note with ID: ${noteId} not found`)
+        throw new AppError(`note with ID: ${noteId} not found`, StatusCodes.BAD_REQUEST)
     }
     next();
 

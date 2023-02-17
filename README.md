@@ -1,10 +1,16 @@
+# Table of Content
+1. [Introduction](#notes-api)
+2. [Technologies](#technologies)
+3. [Setup](#setup)
+
 # Notes API
+***
 
 A simple backend API that allows users create, read, update and delete their notes.
 
-***
 
 #### Technologies
+***
 <div align="center">
 
   <a href="">![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)</a>
@@ -15,6 +21,9 @@ A simple backend API that allows users create, read, update and delete their not
   <a href="">![DigitalOcean](https://img.shields.io/badge/DigitalOcean-%230167ff.svg?style=for-the-badge&logo=digitalOcean&logoColor=white)</a>
   
 </div>
+
+#### Setup
+***
 
 
 

@@ -29,6 +29,7 @@ const getMyNotes = catchAsync( async( req, res ) => {
 
     res.status( StatusCodes.OK ).json({
         status: true,
+        hhbits: notes.length,
         notes
     })
 })

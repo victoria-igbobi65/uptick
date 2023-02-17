@@ -10,13 +10,17 @@ const getaNote = async( object ) => {
     return noteModel.findOne( object )
 }
 
-const getallNotes = async( object ) => {
-    return noteModel.find( object )
+const getallNotes = async( object, sort ) => {
+    return noteModel.find( object ).sort( sort )
 }
 
 const deleteaNote = async( object ) => {
     return noteModel.findByIdAndDelete( object )
 }
 
+const updateaNote = async( id, object, options ) => {
+    return noteModel.findByIdAndUpdate( id, object, options )
+}
 
-module.exports = { createNotes, getaNote, getallNotes, deleteaNote }
+
+module.exports = { createNotes, getaNote, getallNotes, deleteaNote, updateaNote }

@@ -15,15 +15,8 @@ const validateBody = (schema) => {
 const noteSchema = joi.object().keys({
     title: joi
         .string()
-        .min(1)
         .max(100)
-        .required()
         .error(new Error('Title must be between 1 and 100 characters')),
-
-    body: joi
-        .string()
-        .min(1)
-        .error(new Error('Notes content is required')),
 })
 
 const updateNoteSchema = joi.object().keys({

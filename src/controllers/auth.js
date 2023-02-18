@@ -18,7 +18,7 @@ const registration = catchAsync( async( req, res ) => {
     const newUser = await createUser({ email, password })
     newUser.password = undefined;
 
-    res.status( StatusCodes.OK).json({
+    res.status( StatusCodes.CREATED ).json({
         msg: "signup successful!",
         newUser
     })

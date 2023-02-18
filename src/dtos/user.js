@@ -12,6 +12,7 @@ const validateBody = (schema) => {
     }
 }
 
+/* Registration Validator */
 const registerSchema = joi.object().keys({
     
     email: joi
@@ -29,6 +30,7 @@ const registerSchema = joi.object().keys({
         .error(new Error('Password must be at least 8 characters')),
 })
 
+/* Login validator */
 const loginSchema = joi.object().keys({
     email: joi
         .string()

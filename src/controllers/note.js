@@ -15,7 +15,7 @@ const newNotes = catchAsync( async( req, res ) => {
     }
     const newNotes = await createNotes( { title: title.trim(), body: body.trim(), owner: owner } )
 
-    res.status( StatusCodes.OK ).json({
+    res.status( StatusCodes.CREATED ).json({
         msg: "Notes created successfully!",
         newNotes
     })
@@ -52,9 +52,9 @@ const deleteNote = catchAsync( async( req, res ) => {
     const noteId = req.params.id;
     await deleteaNote( { _id: noteId, owner: req.user } )
 
-    res.status( StatusCodes.OK ).json({
+    res.status( StatusCodes.NO_CONTENT ).json({
         status: true,
-        msg: "note deleted successfully!"
+        msg: null
     })
 
 })

@@ -123,7 +123,7 @@ body: notes content
     ```
 * Response
 ```
-  200: success 
+  <span style="color: green;">200</span>: <span style="color: blue;">success</span>
   401: error || Unauthorized
   500: error || Server Error
 ```

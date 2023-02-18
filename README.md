@@ -122,7 +122,7 @@ body: notes content
     /api/v1/note/?sort=title,-body,createdAt
     ```
 * Response
-  * <a href="">![#f03c15](https://placehold.it/150/ffffff/ff0000?text=hello)</a>
+  * <a href="">![#f03c15](https://placehold.it/15x15/#c5f015/#c5f015?text=200)</a>
 
 ```
 

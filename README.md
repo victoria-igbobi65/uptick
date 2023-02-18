@@ -51,11 +51,13 @@ npm run test
 * Route: /api/v1/auth/signup
 * Method: POST
 * Body:
-```
-email: Myemail@gmail.com,
-password: mypassword
+```java
+{
+  email: Myemail@gmail.com,
+  password: mypassword
+}
 
-```
+```java
 * Response:
   * 201: success || Created
   * 409: error || Conflict Error
@@ -66,13 +68,15 @@ password: mypassword
 * Route: /api/v1/auth/login
 * Method: POST
 * Body: 
-```
-email: Myemail@gmail.com,
-password: mypassword
+```java
+{
+  email: Myemail@gmail.com,
+  password: mypassword
+}
 
 ```
 * Response
-```
+```java
   200: success
   400: error || Bad Request
   500: error || Server Error
@@ -82,12 +86,15 @@ password: mypassword
 * Route: /api/v1/note
 * Method: POST
 * Body: 
-```
-title: notes title,
-body: notes content
+```java
+{
+  title: notes title,
+  body: notes content
+}
+
 ```
 * Response status Codes: 
-```
+```java
   201: success || Created
   401: error || Unauthorized
   400: error || Bad Request
@@ -98,7 +105,7 @@ body: notes content
 * Route: /api/v1/note/:id
 * Method: GET
 * Response
-```
+```java
   200: success 
   401: error || Unauthorized
   404: error || Not Found Error
@@ -110,7 +117,7 @@ body: notes content
 * Method: GET
 * Query: 
   * q : queryString 
-  ```
+  ```java
   /api/v1/note/?q=wordToSearch
   ```
   * sort : sort notes in ascending or descending order given a specified format. To sort in descending order, add a `-` prefix before a field, seperate multiple values with a `,`.
@@ -118,15 +125,13 @@ body: notes content
     * title
     * body
     * createdAt
-    ```
-    /api/v1/note/?sort=title,-body,createdAt
+    ```java
+      /api/v1/note/?sort=title,-body,createdAt
     ```
 * Response
-  * <a href="">![#f03c15](https://placehold.it/15x15/#c5f015/#c5f015?text=200)</a>
 
-```
-
-   : <span style="color: blue;">success</span>
+```java
+  200: success
   401: error || Unauthorized
   500: error || Server Error
 ```
@@ -135,12 +140,14 @@ body: notes content
 * Route: /api/v1/note/:id
 * Method: PATCH
 * Body: 
-```
-title: notes title,
-body: notes content
+```java
+  {
+    title: notes title,
+    body: notes content
+  }
 ```
 * Response
-```
+```java
   200: success 
   401: error || Unauthorized
   404: error || Not Found Error
@@ -151,7 +158,7 @@ body: notes content
 * Route: /api/v1/note/:id
 * Method: GET
 * Response
-```
+```java
   200: success 
   401: error || Unauthorized
   404: error || Not Found Error

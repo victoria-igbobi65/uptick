@@ -22,14 +22,14 @@ app.use(cors()) /* allow requests from all origins */
 app.use(helmet())
 app.use(xss()) /* sanitixe user input*/
 app.use( mongoSanitize()) /* sanitize user input to prevent DB operator injection*/
-app.use(
-    rateLimit({
-        windowMs: 12 * 60 * 60 * 1000,
-        max: 5,
-        message: 'You exceeded 100 request in 12 hours!',
-        headers: true,
-    })
-)
+// app.use(
+//     rateLimit({
+//         windowMs: 12 * 60 * 60 * 1000,
+//         max: 5,
+//         message: 'You exceeded 100 request in 12 hours!',
+//         headers: true,
+//     })
+// )
 
 /* set api info response*/
 app.get('/', (req, res) => {

@@ -56,6 +56,7 @@ npm run test
   email: Myemail@gmail.com,
   password: mypassword
 }
+```
 
 ```java
 * Response:
@@ -63,6 +64,7 @@ npm run test
   * 409: error || Conflict Error
   * 400: error || Bad Request
   * 500: error || Server Error
+```
 
 #### Login
 * Route: /api/v1/auth/login

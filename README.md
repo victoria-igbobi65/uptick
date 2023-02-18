@@ -123,7 +123,7 @@ body: notes content
     ```
 * Response
 ```
-  <span style="color: green">some *200* text</span>: <span style="color: blue;">success</span>
+  ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) : <span style="color: blue;">success</span>
   401: error || Unauthorized
   500: error || Server Error
 ```

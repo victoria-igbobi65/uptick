@@ -24,15 +24,15 @@ A simple backend API that allows users create, read, update and delete their not
 
 ### Installation
 First, you need to install the dependencies.
-```
+```java
 $ npm i 
 ```
 secondly, you need to create a `.env` file and copy the `.env.example` file to it.
-```
+```java
 $ cp .env.example .env 
 ```
 Finally, you need to run the server.
-```
+```java
 $ npm run start
 ```
 

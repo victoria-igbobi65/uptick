@@ -10,8 +10,12 @@ const getaNote = async( object ) => {
     return noteModel.findOne( object )
 }
 
-const getallNotes = async( object, sort ) => {
-    return noteModel.find( object ).sort( sort )
+const getallNotes = async( object ) => {
+    return noteModel
+        .find( object.query )
+        .sort( object.sort )
+        .skip( object.skip )
+        .limit( object.limit )
 }
 
 const deleteaNote = async( object ) => {

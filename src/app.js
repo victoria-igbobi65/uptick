@@ -13,8 +13,8 @@ app.use(express.urlencoded({ extended: true }))
 app.use(logger('dev'))
 app.use(cookieParser())
 
-app.use('/auth', userRouter)
-app.use('/notes', noteRouter )
+app.use('/api/v1/auth', userRouter)
+app.use('/api/v1/note', noteRouter )
 
 
 app.use('*', (req, res, next) => {

@@ -130,6 +130,11 @@ npm run test
     ```java
       /api/v1/note/?sort=title,-body,createdAt
     ```
+  * page [default: 1]
+  * limit [default: 20] 
+  ```java
+    /api/v1/note/?page=1&limit=10
+  ```
 * Response
 
 ```java

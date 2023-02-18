@@ -1,14 +1,16 @@
 var mongoose = require("mongoose");
 var { app } = require("./app");
-require("dotenv").config();
+var CONFIG = require('./config/config')
 
-var port = process.env.PORT || 3000;
-var dbURl = process.env.DB_URL;
+/* Variable declarations */
+var port = CONFIG.PORT || 3000;
+var dbURl = CONFIG.DBURL;
 
 mongoose.set("strictQuery", false);
 mongoose
     .connect(dbURl, { useNewUrlParser: true })
     .then(() => console.log("DB connection Successful!"));
+
 
 var server = app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);

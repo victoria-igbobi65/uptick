@@ -23,7 +23,7 @@ $ npm i [ comment ]: # (install dependencies)
 ```
 secondly, you need to create a `.env` file and copy the `.env.example` file to it.
 ```
-$ cp .env.example .env [ comment ]: # ( copy the example file to the .env file)
+$ cp .env.example .env [//]: # ( copy the example file to the .env file)
 ```
 Finally, you need to run the server.
 ```

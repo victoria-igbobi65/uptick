@@ -1,15 +1,10 @@
-# Table of Content
-1. [Introduction](#notes-api)
-2. [Technologies](#technologies)
-3. [Setup](#setup)
-
 # Notes API
 ***
 
 A simple backend API that allows users create, read, update and delete their notes.
 
 
-#### Technologies
+### Technologies
 ***
 <div align="center">
 
@@ -22,8 +17,22 @@ A simple backend API that allows users create, read, update and delete their not
   
 </div>
 
-#### Setup
-***
+### Installation
+First, you need to install the dependencies.
+```
+$ npm i # install dependencies
+```
+secondly, you need to create a `.env` file and copy the `.env.example` file to it.
+```
+$ cp .env.example .env # copy the example file to the .env file
+```
+Finally, you need to run the server.
+```
+$ npm run start # run the server
+```
 
-
-
+### Testing
+To run the run test
+```
+npm run test
+```

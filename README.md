@@ -43,6 +43,9 @@ To run the test
 npm run test
 ```
 
+### Base URL
+https://nervous-shawl-crab.cyclic.app/
+
 ### Usage
 
 

@@ -9,7 +9,7 @@ const protect = catchAsync( async( req, res, next ) => {
     const found = await getaNote({ owner: owner, _id: noteId })
 
     if (!found){
-        throw new AppError(`note with ID: ${noteId} not found`, StatusCodes.BAD_REQUEST)
+        throw new AppError(`note with ID: ${noteId} not found`, StatusCodes.NOT_FOUND )
     }
     next();
 

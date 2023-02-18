@@ -28,7 +28,7 @@ $ cp .env.example .env # ( copy the example file to the .env file)
 ```
 Finally, you need to run the server.
 ```
-$ npm run start # (run the server)
+$ npm run start #(run the server)
 ```
 
 ### Testing

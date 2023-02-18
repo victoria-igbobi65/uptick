@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "A notes CRUD API project from uptick fellowship",
   "scripts": {
-    "start": "nodemon src/db.js",
-    "prod": "NODE_ENV=production nodemon src/db.js"
+    "start": "NODE_ENV=production nodemon src/db.js",
+    "dev": "nodemon src/db.js"
   },
   "author": "Victoria",
   "license": "ISC",

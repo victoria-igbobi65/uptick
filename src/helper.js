@@ -50,7 +50,10 @@ const verifyNoteState = ( object ) => {
 
 const buildQuery = ( owner, object ) =>{
     let query = { owner: owner };
-    let sortBy
+    const sortBy = object.sort? object.sort.split(',').join(' '): '-createdAt'
+    const page = +object.page || 1; 
+    const limit = +object.limit || 10;
+    const skip = (page - 1) * limit
 
     if (object.q){
         query.$or = [
@@ -58,13 +61,8 @@ const buildQuery = ( owner, object ) =>{
             { body: { $regex: object.q, $options: 'i' } }, // check if search word matches in field2
         ]
     }
-    if (object.sort) {
-        sortBy = object.sort.split(',').join(' ')
-    } else {
-        sortBy = '-createdAt'
-    }
     
-    return { query, sortBy }
+    return { query, sortBy, limit, skip }
 } 
 
 module.exports={ signToken, setCookies, decodeToken, verifyNoteState, buildQuery }

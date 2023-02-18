@@ -122,8 +122,11 @@ body: notes content
     /api/v1/note/?sort=title,-body,createdAt
     ```
 * Response
+<a href="">![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png)</a>
+
 ```
-  ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) : <span style="color: blue;">success</span>
+
+   : <span style="color: blue;">success</span>
   401: error || Unauthorized
   500: error || Server Error
 ```

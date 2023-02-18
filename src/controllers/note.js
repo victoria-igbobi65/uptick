@@ -26,7 +26,7 @@ const getMyNotes = catchAsync( async( req, res ) => {
 
     const owner = req.user;
     const query = buildQuery(owner, { ...req.query })
-    const notes = await getallNotes( query.query, query.sortBy )
+    const notes = await getallNotes( query )
 
     res.status( StatusCodes.OK ).json({
         status: true,
@@ -37,12 +37,12 @@ const getMyNotes = catchAsync( async( req, res ) => {
 
 
 const getNote = catchAsync( async( req, res) => {
-    const noteId = req.params.id;
+    const noteId = req.params.id
 
     const note = await getaNote({ owner: req.user, _id: noteId })
-    res.status( StatusCodes.OK ).json({
+    res.status(StatusCodes.OK).json({
         status: true,
-        note
+        note,
     })
 })
 

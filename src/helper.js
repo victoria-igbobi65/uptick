@@ -1,22 +1,22 @@
 const jwt = require('jsonwebtoken')
 const { promisify } = require('util')
-const CONSTANTS = require('./constants/ts')
-require('dotenv').config()
+const CONFIG = require('./config/config')
+
 
 const signToken = ( id ) => {
-    return jwt.sign({ id }, process.env.SECRET_KEY)
+    return jwt.sign({ id }, CONFIG.SECRET )
 }
 
 const setCookies = ( res, tokenName, token ) => {
 
     return res.cookie(tokenName, token, {
         httpOnly: true,
-        secure: CONSTANTS.APP_ENV.PRODUCTION,
+        secure: CONFIG.APP_ENV,
     })
 }
 
 const decodeToken = async (token) => {
-    return promisify(jwt.verify)(token, process.env.SECRET_KEY)
+    return promisify( jwt.verify )( token, CONFIG.SECRET )
 }
 
 const buildQuery = ( owner, object ) =>{

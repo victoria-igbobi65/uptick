@@ -19,38 +19,6 @@ const decodeToken = async (token) => {
     return promisify(jwt.verify)(token, process.env.SECRET_KEY)
 }
 
-const verifyNoteState = ( object ) => {
-
-    console.log(object.title)
-    console.log(object.body)
-
-    let title = false 
-    let body = false
-    
-    if ( object.title){
-        title = object.title.trim().length
-    }
-    if( object.body){
-        body= object.body.trim().length;
-    }
-    if ( !object.title && ! object.body ){
-        return true;
-    }
-    else if ( title === 0 && !body){
-        return true;
-    }
-    else if (body === 0 && !title){
-        return true;
-    }
-    else if (title === 0 && body === 0){
-        return true;
-    }
-    else {
-        return false;
-    }
-
-}
-
 const buildQuery = ( owner, object ) =>{
     let query = { owner: owner };
     const sortBy = object.sort? object.sort.split(',').join(' '): '-createdAt'
@@ -68,4 +36,15 @@ const buildQuery = ( owner, object ) =>{
     return { query, sortBy, limit, skip }
 } 
 
-module.exports={ signToken, setCookies, decodeToken, verifyNoteState, buildQuery }
+const trimString = ( object ) => {
+    const query = {}
+    if ( object.title){
+        query.title = object.title.trim()
+    }
+    if ( object.body ){
+        query.body = object.body.trim()
+    }
+    return query;
+}
+
+module.exports={ signToken, setCookies, decodeToken, buildQuery, trimString }

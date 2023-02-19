@@ -2,18 +2,15 @@ const { StatusCodes } = require('http-status-codes');
 const catchAsync = require('../errors/catchAsync')
 const { createNotes, getallNotes, getaNote, deleteaNote, updateaNote } = require('../services/notes');
 const { AppError } = require('../errors/AppError');
-const { verifyNoteState, buildQuery } = require('../helper')
+const { buildQuery, trimString } = require('../helper')
 
 
 const newNotes = catchAsync( async( req, res ) => {
 
-    const { title, body } = req.body;
+    const { title, body } = trimString( {...req.body} );
     const owner = req.user;
-
-    if ( verifyNoteState( req.body ) ){
-        throw new AppError( 'Empty note not saved!', StatusCodes.BAD_REQUEST )
-    }
-    const newNotes = await createNotes( { title: title.trim(), body: body.trim(), owner: owner } )
+    
+    const newNotes = await createNotes( { title: title, body: body, owner: owner } )
 
     res.status( StatusCodes.CREATED ).json({
         msg: "Notes created successfully!",

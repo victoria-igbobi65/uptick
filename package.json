@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "A notes CRUD API project from uptick fellowship",
   "scripts": {
-    "start": "NODE_ENV=production node src/db.js",
-    "dev": "nodemon src/db.js"
+    "start": "NODE_ENV=production node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "NODE_ENV=test jest --detectOpenHandles  --watchAll "
   },
   "author": "Victoria",
   "license": "ISC",
@@ -25,5 +26,9 @@
     "mongoose": "^6.9.1",
     "morgan": "^1.10.0",
     "xss-clean": "^0.1.1"
+  },
+  "devDependencies": {
+    "jest": "^29.4.3",
+    "supertest": "^6.3.3"
   }
 }

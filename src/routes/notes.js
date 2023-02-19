@@ -1,14 +1,12 @@
 const express = require('express')
-
-//const { notesDto, updateDto } = require('../dtos/notes')
 const { validateUser } = require('../middlewares/authenticate.user')
-const { protect } = require('../middlewares/validate.notes')
+const { protect, validatenote } = require('../middlewares/validate.notes')
 const { newNotes, getMyNotes, getNote, deleteNote, updateNote } = require('../controllers/note')
 const noteRouter = express.Router();
 
 noteRouter
     .route('/')
-    .post( validateUser, newNotes )
+    .post( validateUser, validatenote, newNotes )
     .get( validateUser, getMyNotes )
 
 noteRouter

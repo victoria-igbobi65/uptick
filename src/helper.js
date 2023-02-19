@@ -21,6 +21,9 @@ const decodeToken = async (token) => {
 
 const verifyNoteState = ( object ) => {
 
+    console.log(object.title)
+    console.log(object.body)
+
     let title = false 
     let body = false
     

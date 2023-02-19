@@ -1,5 +1,6 @@
 /* Module Imports */
 const express = require('express')
+const path = require('path')
 const logger = require('morgan')
 const cors = require('cors')
 const helmet = require('helmet')
@@ -14,6 +15,9 @@ const globalErrorhandler = require('./errors/errorHandler')
 const app = express()
 
 /* MIDDLEWARES */
+app.set('view engine', 'ejs')
+app.set('views', path.join(__dirname, 'views'))
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(logger('dev'))
@@ -22,27 +26,22 @@ app.use(cors()) /* allow requests from all origins */
 app.use(helmet())
 app.use(xss()) /* sanitixe user input*/
 app.use( mongoSanitize()) /* sanitize user input to prevent DB operator injection*/
-// app.use(
-//     rateLimit({
-//         windowMs: 12 * 60 * 60 * 1000,
-//         max: 5,
-//         message: 'You exceeded 100 request in 12 hours!',
-//         headers: true,
-//     })
-// )
-
-/* set api info response*/
-app.get('/', (req, res) => {
-    res.json({
-        status: true,
-        message: 'Visit the following link(s) for details about usage',
-        link: 'https://github.com/victoria-igbobi65/uptick#usage',
-        readme: 'https://github.com/victoria-igbobi65/uptick#readme',
+app.use(
+    rateLimit({
+        windowMs: 12 * 60 * 60 * 1000,
+        max: 5,
+        message: 'You exceeded 100 request in 12 hours!',
+        headers: true,
     })
-})
+)
 
+
+app.get('/', ( req, res ) =>{
+    res.render('index')
+})
 app.use('/api/v1/auth', userRouter)
 app.use('/api/v1/note', noteRouter )
+
 
 
 /* Error handler Middlewares */

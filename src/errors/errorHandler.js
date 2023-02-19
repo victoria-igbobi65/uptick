@@ -36,6 +36,8 @@ const devHandler = (err, req, res, next) => {
 
 /*Production error handler*/
 var prodHandler = (err, req, res, next) => {
+    
+    console.log( err )
     /*Defined Errors*/
     if (err.name === 'ValidationError') {
         err = prodValidationError(err)

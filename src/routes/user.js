@@ -1,7 +1,7 @@
 const express = require('express')
 
 const { registration, login } = require('../controllers/auth')
-const { signupDto, loginDto } = require('../dtos/user')
+const { signupDto, loginDto } = require('../validators/user')
 const userRouter = express.Router();
 
 userRouter

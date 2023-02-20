@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 const { promisify } = require('util')
-const CONFIG = require('./config/config')
+const CONFIG = require('../config/config')
 
 
 const signToken = ( id ) => {

@@ -4,24 +4,24 @@ const { userModel } = require('../src/models/user')
 const mongoose = require('mongoose')
 
 
-beforeAll(async () => {
-    await userModel.deleteMany({})
-})
-
-afterAll(async () => {
-    await mongoose.connection.close()
-})
-
-beforeEach(async () => {
-    await userModel.deleteMany({})
-    await userModel.create({
-        email: 'user@gmail.com',
-        password: 'password1234',
-    })
-})
-
 
 describe( 'User Login', () => {
+
+    beforeAll(async () => {
+        await userModel.deleteMany({})
+    })
+
+    afterAll(async () => {
+        await mongoose.connection.close()
+    })
+
+    beforeEach(async () => {
+        await userModel.deleteMany({})
+        await userModel.create({
+            email: 'user@gmail.com',
+            password: 'password1234',
+        })
+    })
 
     test('returns a 200 if login is successful', async() =>{
         const user = {
@@ -45,8 +45,20 @@ describe( 'User Login', () => {
             .post('/api/v1/auth/login')
             .send(user)
         expect(response.statusCode).toBe(400)
+        expect(JSON.parse(response.text).status).toBe('fail')
+        expect(JSON.parse(response.text).message).toBe('email or password incorrect!')
+    })
+
+    test('returns a 400 if details not provided', async () => {
+        const user = {
+            email: '',
+            password: '',
+        }
+        const response = await request(app)
+            .post('/api/v1/auth/login')
+            .send(user)
+        expect(response.statusCode).toBe(400)
         
-        //expect(JSON.parse(response.text).message).toBe('email or password incorrect!')
     })
     
 })

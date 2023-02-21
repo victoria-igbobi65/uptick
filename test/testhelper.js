@@ -9,3 +9,12 @@ exports.note = {
     body: 'Hearld grift thoughts',
 }
 
+exports.updateNote = {
+    body: 'Hear the ocean and the earth',
+}
+
+exports.emptyNote = {
+    title: '',
+    body: '',
+}
+

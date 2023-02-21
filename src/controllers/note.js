@@ -2,7 +2,7 @@ const { StatusCodes } = require('http-status-codes');
 const catchAsync = require('../errors/catchAsync')
 const { createNotes, getallNotes, getaNote, deleteaNote, updateaNote } = require('../services/notes');
 const { AppError } = require('../errors/AppError');
-const { buildQuery, trimString } = require('../helper')
+const { buildQuery, trimString } = require('../utils/helper')
 
 
 const newNotes = catchAsync( async( req, res ) => {

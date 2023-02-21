@@ -32,14 +32,11 @@ describe("Update Note", () => {
     })
 
     test('returns a 200 if update successful', async() => {
-        const note = {
-            body: "Hear the ocean and the earth"
-        }
-
+        
         const response = await request( app )
             .patch(`/api/v1/note/${ id }`)
             .set('Cookie', authToken)
-            .send( note )
+            .send( HELPER.updateNote )
         expect( response.statusCode ).toBe( 200 )
         expect( response.body.status).toBe( true )
         expect(response.body.updatedNote.title).toBe('Fall of the Ocean')
@@ -49,13 +46,9 @@ describe("Update Note", () => {
     
     test('return 401 error if token not provided', async() =>{
 
-        const note = {
-            body: 'Hear the ocean and the earth',
-        }
-
         const response = await request(app)
             .patch(`/api/v1/note/${id}`)
-            .send(note)
+            .send( HELPER.updateNote )
         expect( response.statusCode ).toBe( 401 )
         expect( response.body.status ).toBe('fail')
         expect( response.body.message ).toBe('You are not logged in!')
@@ -63,14 +56,11 @@ describe("Update Note", () => {
     })
 
     test('return 404 error if note id not found or note id doesn\'t belong to user', async () => {
-        const note = {
-            body: 'Hear the ocean and the earth',
-        }
 
         const response = await request(app)
             .patch(`/api/v1/note/${ HELPER.invalidId }`)
             .set('Cookie', authToken)
-            .send(note)
+            .send( HELPER.updateNote )
         expect( response.statusCode ).toBe( 404 )
         expect( response.body.status ).toBe('fail')
         expect( response.body.message ).toBe('note with ID: 63f5022ff0b2c6f5c4cf5fb9 not found')

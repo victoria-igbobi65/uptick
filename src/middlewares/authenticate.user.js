@@ -1,7 +1,7 @@
 const { StatusCodes } = require('http-status-codes');
 const { AppError } = require('../errors/AppError');
 const catchAsync = require('../errors/catchAsync')
-const { decodeToken } = require('../helper')
+const { decodeToken } = require('../utils/helper')
 
 const validateUser = catchAsync( async( req, res, next ) =>{ 
 

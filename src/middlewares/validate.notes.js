@@ -2,7 +2,7 @@ const { StatusCodes } = require("http-status-codes");
 const { AppError } = require("../errors/AppError");
 const catchAsync = require("../errors/catchAsync");
 const { getaNote } = require("../services/notes");
-const { trimString } = require('../helper')
+const { trimString } = require('../utils/helper')
 
 const protect = catchAsync( async( req, res, next ) => {
     const noteId = req.params.id;

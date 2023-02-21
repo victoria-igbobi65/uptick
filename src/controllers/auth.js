@@ -2,7 +2,7 @@ const { StatusCodes } = require('http-status-codes')
 
 const { getaUser, createUser } = require('../services/user')
 const { AppError } = require('../errors/AppError')
-const { signToken, setCookies } = require('../helper')
+const { signToken, setCookies } = require('../utils/helper')
 const catchAsync = require('../errors/catchAsync')
 
 

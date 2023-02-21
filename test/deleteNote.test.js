@@ -50,8 +50,8 @@ describe('Delete Note', () => {
 
     test("return 404 error if note id not found or note id doesn't belong to user", async () => {
         
-        const response = await request(app)
-            .delete(`/api/v1/note/${HELPER.invalidId}`)
+        const response = await request( app )
+            .delete(`/api/v1/note/${ HELPER.invalidId }`)
             .set('Cookie', authToken)
         expect(response.statusCode).toBe(404)
         expect(response.body.status).toBe('fail')

@@ -75,7 +75,7 @@ describe('Create new note', () => {
 
     })
 
-    test('should return a 400 error when no data is passed', async () => {
+    test('should return a 400 error when title and body is empty', async () => {
 
         const note = {
             title: '',

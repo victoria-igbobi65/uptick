@@ -23,7 +23,6 @@ app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(logger('dev'))
 app.use(cookieParser())
 app.use(cors()) /* allow requests from all origins */
 app.use(helmet())
@@ -32,6 +31,9 @@ app.use( mongoSanitize()) /* sanitize user input to prevent DB operator injectio
 app.get('/', rootRouter)
 app.use('/api/v1/auth', userRouter)
 app.use('/api/v1/note', noteRouter )
+if ( CONFIG.NODE_ENV !== 'test'){
+    app.use(logger('dev'))
+}
 
 
 

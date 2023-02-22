@@ -12,7 +12,7 @@ process.on('uncaughtException', (err) => {
 
 
 var server = app.listen(PORT, () => {
-    logger.info(`Server is running on http://localhost:${ PORT }`);
+    console.log(`Server is running on http://localhost:${ PORT }`);
 });
 
 

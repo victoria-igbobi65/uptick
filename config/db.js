@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const { logger } = require('../src/utils/logger')
 
 module.exports = (URI) => {
 

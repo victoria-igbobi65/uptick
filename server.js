@@ -1,14 +1,6 @@
 var { app } = require("./app");
-var { logger } = require('./src/utils/logger')
 var CONFIG = require('./config/config')
 var PORT = CONFIG.PORT || 3000;
-
-/*Uncaught exception*/
-process.on('uncaughtException', (err) => {
-    logger.error('UNCAUGHT EXCEPTION! ...Shutting down....')
-    logger.error(`Error: ${ err.message }`)
-    process.exit(1)
-})
 
 
 var server = app.listen(PORT, () => {
@@ -18,8 +10,8 @@ var server = app.listen(PORT, () => {
 
 //HANDLING UNHANDLED REJECTIONS
 process.on('unhandledRejection', err => {
-    logger.error('Unhandled Rejection! ...Shutting down....')
-    logger.error(`Error: ${ err}`)
+    console.log('Unhandled Rejection! ...Shutting down....')
+    console.log(`Error: ${ err.message}`)
     server.close(() => {
         process.exit(1);
     }); 

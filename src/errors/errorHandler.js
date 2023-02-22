@@ -1,6 +1,7 @@
-require('dotenv').config()
-const { logger } = require('../utils/logger')
+const CONFIG = require('../../config/config')
 const { AppError } = require('./AppError') 
+const { logger } = require('../utils/logger')
+
 
 /*Defined error*/
 const prodValidationError = (err) => {
@@ -38,7 +39,6 @@ const devHandler = (err, req, res, next) => {
 /*Production error handler*/
 var prodHandler = (err, req, res, next) => {
     
-    logger.error( err )
     /*Defined Errors*/
     if (err.name === 'ValidationError') {
         err = prodValidationError(err)
@@ -61,7 +61,8 @@ var prodHandler = (err, req, res, next) => {
             message: err.message,
         })
     } else {
-        /*Response Handlers for undefined errors*/
+
+        logger.error( err )
         return res.status(500).json({
             status: 'error',
             message: 'Server Issues!',
@@ -69,4 +70,4 @@ var prodHandler = (err, req, res, next) => {
     }
 }
 
-module.exports = process.env.NODE_ENV === 'development' ? devHandler : prodHandler
+module.exports = CONFIG.NODE_ENV === 'development' ? devHandler : prodHandler

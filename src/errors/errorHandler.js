@@ -1,5 +1,6 @@
 const CONFIG = require('../../config/config')
 const { AppError } = require('./AppError') 
+const { logger } = require('../utils/logger')
 
 
 /*Defined error*/
@@ -61,7 +62,7 @@ var prodHandler = (err, req, res, next) => {
         })
     } else {
 
-        console.log(err)
+        logger.error(err)
         return res.status(500).json({
             status: 'error',
             message: 'Server Issues!',

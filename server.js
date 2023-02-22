@@ -1,17 +1,18 @@
 var { app } = require("./app");
+const { logger } = require('./src/utils/logger')
 var CONFIG = require('./config/config')
 var PORT = CONFIG.PORT || 3000;
 
 
 var server = app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${ PORT }`);
+    logger.info(`Server is running on http://localhost:${ PORT }`);
 });
 
 
 //HANDLING UNHANDLED REJECTIONS
 process.on('unhandledRejection', err => {
-    console.log('Unhandled Rejection! ...Shutting down....')
-    console.log(`Error: ${ err.message}`)
+    logger.info('Unhandled Rejection! ...Shutting down....')
+    logger.error(`Error: ${ err.message}`)
     server.close(() => {
         process.exit(1);
     }); 

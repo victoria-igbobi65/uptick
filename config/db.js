@@ -4,7 +4,7 @@ module.exports = (URI) => {
 
     mongoose.set('strictQuery', false)
     mongoose
-        .connect(URI)
+        .connect(URI, { useNewUrlParser: true })
         .then(() => {
             console.log('Connection to MongoDB successful')
         })

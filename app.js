@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(cors()) /* allow requests from all origins */
 app.use(helmet())
-app.use(xss()) /* sanitixe user input*/
+app.use(xss()) /* sanitize user input*/
 app.use( mongoSanitize()) /* sanitize user input to prevent DB operator injection*/
 app.use(requestLoggerMiddleware) /* middleware to log requests depending on the environment*/
 app.get('/', rootRouter)

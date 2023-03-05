@@ -10,6 +10,6 @@ module.exports = (URI) => {
             logger.info('Connection to MongoDB successful')
         })
         .catch((err) => {
-            logger.error('Connection to MongoDB failed', err)
+            logger.error('Connection to MongoDB failed', err.message)
         })
 }

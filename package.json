@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A notes CRUD API project from uptick fellowship",
   "scripts": {
-    "start": "NODE_ENV=production node server.js",
+    "start": "NODE_ENV=production node config/server.js",
     "dev": "nodemon server.js",
     "test": "NODE_ENV=test jest --detectOpenHandles  --watchAll "
   },
@@ -12,6 +12,7 @@
   "dependencies": {
     "@google-cloud/language": "^5.2.1",
     "@hapi/joi": "^17.1.1",
+    "@treblle/express": "^0.0.2",
     "bcrypt": "^5.1.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",

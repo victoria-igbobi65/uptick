@@ -20,6 +20,7 @@ const decodeToken = async (token) => {
 }
 
 const buildQuery = ( owner, object ) =>{
+    
     let query = { owner: owner };
     const sortBy = object.sort? object.sort.split(',').join(' '): '-createdAt'
     const page = +object.page || 1; 

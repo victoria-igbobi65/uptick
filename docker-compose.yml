@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+    mongo_db:
+        image: mongo:latest
+        restart: always
+        ports:
+            - 2718:27017
+        volumes:
+            - mongo_db:/data/db
+
+    app:
+        build: .
+        ports:
+            - 4000:3000
+        volumes:
+            - .:/usr/src/app
+        environment:
+            - PORT=3000
+            - NODE_ENV=development
+            - TEST_DBURL=mongodb://mongo_db:27017/test
+            - DB_URL=mongodb://mongo_db:27017/uptick
+            - SECRET_KEY=frsesvhsmxhxhxnmxlsosiwdhncksosokcccmvnjslsshdgdh
+            - TREBLLE_API_KEY=VB6cUOAxpNR3TyjVJgkELLwM96PfU5Ib
+            - TREBLLE_PROJECT_ID=JBS7ZbluYBuxRRuC
+        depends_on:
+            - mongo_db
+volumes:
+    mongo_db: {}
